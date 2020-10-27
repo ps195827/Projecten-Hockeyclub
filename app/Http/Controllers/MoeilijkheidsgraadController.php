@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Minimaleveldoppervlak;
+use App\Models\Moeilijkheidsgraad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class MinimaleveldoppervlakController extends Controller
+class MoeilijkheidsgraadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class MinimaleveldoppervlakController extends Controller
      */
     public function index()
     {
-        $minimaleveldoppervlak = Minimaleveldoppervlak::paginate(10);
-        return view('minimaleveldoppervlak.index', compact('minimaleveldoppervlak'));
+        $moeilijkheidsgraad = Moeilijkheidsgraad::paginate(10);
+        return view('moeilijkheidsgraad.index', compact('moeilijkheidsgraad'));
     }
 
     /**
@@ -26,7 +26,7 @@ class MinimaleveldoppervlakController extends Controller
      */
     public function create()
     {
-        return view('minimaleveldoppervlak.create');
+        return view('moeilijkheidsgraad.create');
     }
 
     /**
@@ -41,12 +41,12 @@ class MinimaleveldoppervlakController extends Controller
             'name' => 'required|min:3'
         ]);
 
-        $minimaleveldoppervlak = Minimaleveldoppervlak::create([ 
+        $moeilijkheidsgraad = Moeilijkheidsgraad::create([ 
             'name' => $request->name,
             'slug' => Str::slug($request->name)
         ]);
 
-        return redirect()->back()->with('success',' Minimale veldoppervlakte succesvol toegevoegd');
+        return redirect()->back()->with('success',' Moeilijkheidsgraad succesvol toegevoegd');
     }
 
     /**
@@ -68,8 +68,8 @@ class MinimaleveldoppervlakController extends Controller
      */
     public function edit($id)
     {
-        $minimaleveldoppervlak = Minimaleveldoppervlak::findorfail($id);
-        return view('minimaleveldoppervlak.edit', compact('minimaleveldoppervlak'));
+        $moeilijkheidsgraad = Moeilijkheidsgraad::findorfail($id);
+        return view('moeilijkheidsgraad.edit', compact('moeilijkheidsgraad'));
     }
 
     /**
@@ -85,14 +85,14 @@ class MinimaleveldoppervlakController extends Controller
             'name' => 'required'
         ]);
 
-        $minimaleveldoppervlak_data = [
+        $moeilijkheidsgraad_data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name)
         ];
 
-        Minimaleveldoppervlak::whereId($id)->update($minimaleveldoppervlak_data);
+        Moeilijkheidsgraad::whereId($id)->update($moeilijkheidsgraad_data);
 
-        return redirect()->route('minimaleveldoppervlak.index')->with('success',' Minimale veldoppervlakte succesvol geupgedate');
+        return redirect()->route('moeilijkheidsgraad.index')->with('success',' Moeilijkheidsgraad succesvol geupgedate');
     }
 
     /**
@@ -103,9 +103,9 @@ class MinimaleveldoppervlakController extends Controller
      */
     public function destroy($id)
     {
-        $minimaleveldoppervlak = Minimaleveldoppervlak::findorfail($id);
-        $minimaleveldoppervlak->delete();
+        $moeilijkheidsgraad = Moeilijkheidsgraad::findorfail($id);
+        $moeilijkheidsgraad->delete();
 
-       return redirect()->back()->with('success',' Minimale veldoppervlakte succesvol verwijderd');
+       return redirect()->back()->with('success',' Moeilijkheidsgraad succesvol verwijderd');
     }
 }

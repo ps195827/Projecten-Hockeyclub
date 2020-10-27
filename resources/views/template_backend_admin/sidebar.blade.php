@@ -17,11 +17,10 @@
                 <li><a class="nav-link" href="{{ route('sector.index') }}">Sectoren</a></li>
                 <li><a class="nav-link" href="{{ route('subsector.index') }}">Subsectoren</a></li>
                 <li><a class="nav-link" href="{{ route('leerfase.index') }}">Leerfases</a></li>
-                <li><a class="nav-link" href="{{ route('intensiteit.index') }}">Intensiteiten</a></li>
                 <li><a class="nav-link" href="{{ route('spelfase.index') }}">Spelfases</a></li>
                 <li><a class="nav-link" href="{{ route('trainingsonderdeel.index') }}">Trainingsonderdelen</a></li>
-                <li><a class="nav-link" href="{{ route('uitvoering.index') }}">Uitvoering</a></li>
-                <li><a class="nav-link" href="{{ route('minimaleveldoppervlak.index') }}">Minimale veldoppervlakte</a></li>
+                <li><a class="nav-link" href="{{ route('moeilijkheidsgraad.index') }}">Moeilijkheidsgraad</a></li>
+                <li><hr></li>
                 <li><a class="nav-link" href="{{ route('tag.index') }}">Tags</a></li>
                 <li><a class="nav-link" href="{{ route('category.index') }}">Category lijst</a></li>
               </ul>

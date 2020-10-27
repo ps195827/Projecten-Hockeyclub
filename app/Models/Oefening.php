@@ -47,10 +47,6 @@ class Oefening extends Model
         return $this->belongsTo('App\Models\uitvoering');
     }
 
-    public function minimaleveldoppervlak(){
-        return $this->belongsTo('App\Models\minimaleveldoppervlak');
-    }
-
     public function doelgroep(){
         return $this->belongsTo('App\Models\doelgroep');
     }

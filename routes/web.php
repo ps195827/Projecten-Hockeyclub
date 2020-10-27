@@ -38,11 +38,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/doelgroep', App\Http\Controllers\DoelgroepController::class);
     Route::resource('/team', App\Http\Controllers\TeamController::class);
     Route::resource('/tag', App\Http\Controllers\TagController::class);
-    Route::resource('/intensiteit', App\Http\Controllers\IntensiteitController::class);
     Route::resource('/spelfase', App\Http\Controllers\SpelfaseController::class);
     Route::resource('/trainingsonderdeel', App\Http\Controllers\TrainingsonderdeelController::class);
-    Route::resource('/uitvoering', App\Http\Controllers\UitvoeringController::class);
-    Route::resource('/minimaleveldoppervlak', App\Http\Controllers\MinimaleveldoppervlakController::class);
+    Route::resource('/moeilijkheidsgraad', App\Http\Controllers\MoeilijkheidsgraadController::class);
     Route::resource('/oefening', App\Http\Controllers\OefeningController::class);
     Route::resource('/website', App\Http\Controllers\WebsiteController::class);
     Route::resource('/profiel', App\Http\Controllers\UserController::class);

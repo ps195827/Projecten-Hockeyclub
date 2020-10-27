@@ -1,6 +1,13 @@
 @extends('template_backend_admin.home')
-    @section('sub-title','Intensiteit')
+    @section('sub-title','Moeilijkheidsgraad')
+    @section('path')
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
+            <div class="breadcrumb-item">Moeilijkheidsgraad</div>
+        </div>
+    @endsection
     @section('content')
+    
 
     @if(Session::has('success'))
         <div class="alert alert-success alert-dismissible show fade">
@@ -13,7 +20,7 @@
         </div>
     @endif
 
-    <a href="{{ route('intensiteit.create') }}" class="btn btn-success btn-sm">Maak nieuwe category aan</a>
+    <a href="{{ route('moeilijkheidsgraad.create') }}" class="btn btn-success btn-sm">Maak nieuwe moeilijkheidsgraad aan</a>
     <br><br>
 
         <table class="table table-striped table-hover table-sm">
@@ -25,15 +32,15 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($intensiteit as $result => $resultaat)
+            @foreach ($moeilijkheidsgraad as $result => $resultaat)
                 <tr>
-                    <td>{{ $result + $intensiteit->firstitem() }}</td>
+                    <td>{{ $result + $moeilijkheidsgraad->firstitem() }}</td>
                     <td>{{ $resultaat->name }}</td>
                     <td> 
-                        <form action="{{ route('intensiteit.destroy', $resultaat->id )}}" method="POST">
+                        <form action="{{ route('moeilijkheidsgraad.destroy', $resultaat->id )}}" method="POST">
                         @csrf
                         @method('delete')
-                            <a href="{{ route('intensiteit.edit' , $resultaat->id ) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{{ route('moeilijkheidsgraad.edit' , $resultaat->id ) }}" class="btn btn-primary btn-sm">Edit</a>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
@@ -41,6 +48,6 @@
             @endforeach
             </tbody>
         </table>
-        {{ $intensiteit->links() }}
+        {{ $moeilijkheidsgraad->links() }}
 
 @endsection

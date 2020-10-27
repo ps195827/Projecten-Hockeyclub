@@ -6,14 +6,11 @@ use Auth;
 use App\Models\Oefening;
 use App\Models\Doelgroep;
 use App\Models\Domein;
-use App\Models\Intensiteit;
 use App\Models\Leerfase;
-use App\Models\Minimaleveldoppervlak;
 use App\Models\Sector;
 use App\Models\Spelfase;
 use App\Models\Subsector;
 use App\Models\Trainingsonderdeel;
-use App\Models\Uitvoering;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -42,14 +39,10 @@ class OefeningController extends Controller
         $subsector = Subsector::all();
         $domein = Domein::all();
         $doelgroep = Doelgroep::all();
-        $intensiteit = Intensiteit::all();
         $spelfase = Spelfase::all();
         $trainingsonderdeel = Trainingsonderdeel::all();
-        $uitvoering = Uitvoering::all();
-        $minimaleveldoppervlak = Minimaleveldoppervlak::all();
         $doelgroep = Doelgroep::all();
-        return view('oefening.create', compact('domein','sector','subsector','leerfase',
-        'intensiteit','spelfase','trainingsonderdeel','uitvoering','minimaleveldoppervlak','doelgroep'));
+        return view('oefening.create', compact('domein','sector','subsector','leerfase','spelfase','trainingsonderdeel','doelgroep'));
     }
 
     /**
@@ -68,11 +61,8 @@ class OefeningController extends Controller
             'leerfase_id' => 'required',
             'moeilijkheidsgraad' => 'required',
             'beschrijving' => 'required',
-            'intensiteit_id' => 'required',
             'spelfase_id' => 'required',
             'trainingsonderdeel_id' => 'required',
-            'uitvoering_id' => 'required',
-            'minimaleveldoppervlak_id' => 'required',
             'minimalegroepsgrootte' => 'required',
             'maximalegroepsgrootte' => 'required',
             'duur' => 'required',
@@ -102,11 +92,8 @@ class OefeningController extends Controller
             'leerfase_id' => $request->leerfase_id,
             'moeilijkheidsgraad' => $request->moeilijkheidsgraad,
             'beschrijving' => $request->beschrijving,
-            'intensiteit_id' => $request->intensiteit_id,
             'spelfase_id' => $request->spelfase_id,
             'trainingsonderdeel_id' => $request->trainingsonderdeel_id,
-            'uitvoering_id' => $request->uitvoering_id,
-            'minimaleveldoppervlak_id' => $request->minimaleveldoppervlak_id,
             'minimalegroepsgrootte' => $request->minimalegroepsgrootte,
             'maximalegroepsgrootte' => $request->maximalegroepsgrootte,
             'duur' => $request->duur,

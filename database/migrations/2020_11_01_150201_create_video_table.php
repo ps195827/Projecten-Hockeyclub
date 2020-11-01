@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubsectorTable extends Migration
+class CreateVideoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateSubsectorTable extends Migration
      */
     public function up()
     {
-        Schema::create('subsector', function (Blueprint $table) {
+        Schema::create('video', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('slug');
+            $table->string('titel');
+            $table->text('omschrijving');
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateSubsectorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subsector');
+        Schema::dropIfExists('video');
     }
 }

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sector;
-use App\Models\Subsector;
+use App\Models\Werkvorm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class SubsectorController extends Controller
+class WerkvormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class SubsectorController extends Controller
      */
     public function index()
     {
-        $subsector = Subsector::paginate(100);
-        return view('subsector.index', compact('subsector'));
+        $werkvorm = Werkvorm::paginate(10);
+        return view('werkvorm.index', compact('werkvorm'));
     }
 
     /**
@@ -27,8 +26,7 @@ class SubsectorController extends Controller
      */
     public function create()
     {
-        $sector = Sector::all();
-        return view('subsector.create');
+        return view('werkvorm.create');
     }
 
     /**
@@ -40,17 +38,15 @@ class SubsectorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3',
-            'sector_id' => 'required'
+            'name' => 'required|min:3'
         ]);
 
-        $subsector = Subsector::create([ 
+        $werkvorm = Werkvorm::create([ 
             'name' => $request->name,
-            'sector_id' => $request->sector_id,
             'slug' => Str::slug($request->name)
         ]);
 
-        return redirect()->back()->with('success',' Subsector succesvol toegevoegd');
+        return redirect()->back()->with('success',' Werkvorm succesvol toegevoegd');
     }
 
     /**
@@ -72,8 +68,8 @@ class SubsectorController extends Controller
      */
     public function edit($id)
     {
-        $subsector = Subsector::findorfail($id);
-        return view('subsector.edit', compact('subsector'));
+        $werkvorm = Werkvorm::findorfail($id);
+        return view('werkvorm.edit', compact('werkvorm'));
     }
 
     /**
@@ -89,14 +85,14 @@ class SubsectorController extends Controller
             'name' => 'required'
         ]);
 
-        $subsector_data = [
+        $werkvorm_data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name)
         ];
 
-        Subsector::whereId($id)->update($subsector_data);
+        Werkvorm::whereId($id)->update($werkvorm_data);
 
-        return redirect()->route('subsector.index')->with('success',' Subsector succesvol geupgedate');
+        return redirect()->route('werkvorm.index')->with('success',' Werkvorm succesvol geupgedate');
     }
 
     /**
@@ -107,9 +103,9 @@ class SubsectorController extends Controller
      */
     public function destroy($id)
     {
-        $subsector = Subsector::findorfail($id);
-        $subsector->delete();
+        $werkvorm = Werkvorm::findorfail($id);
+        $werkvorm->delete();
 
-        return redirect()->back()->with('success',' Subsector succesvol verwijderd');
+       return redirect()->back()->with('success',' Werkvorm succesvol verwijderd');
     }
 }

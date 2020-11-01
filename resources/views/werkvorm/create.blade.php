@@ -1,5 +1,16 @@
 @extends('template_backend_admin.home')
-@section('sub-title','Nieuwe Subsector')
+@section('sub-title','Nieuwe Werkvorm')
+@section('path')
+  <div class="section-header-breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('werkvorm.index') }}">Werkvorm</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Nieuwe Werkvorm</li>
+        </ol>
+    </nav>
+  </div>
+@endsection
 @section('content')
 
 
@@ -22,25 +33,15 @@
         </div>
     @endif
 
-    <form action="{{ route('subsector.store') }}" method="POST">
+    <form action="{{ route('werkvorm.store') }}" method="POST">
     @csrf
     <div class="form-group">
-        <label>Subsector</label>
+        <label>Werkvorm</label>
         <input type="text" class="form-control" name="name">
     </div>
 
     <div class="form-group">
-        <label>Sector</label>
-        <select class="form-control" name="sector_id">
-        <option value="" holder>Kies een sector</option>
-            @foreach($sector as $result)
-                <option value="{{ $result->id }}">{{ $result->name }}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="form-group">
-        <input type="submit" class="btn btn-primary btn-block" value="Nieuwe subsector toevoegen">
+        <input type="submit" class="btn btn-primary btn-block" value="Nieuwe Werkvorm toevoegen">
     </div>
 </form>
 

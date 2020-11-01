@@ -46,7 +46,7 @@
                   <div class="card-body">
                     <h4>Filmpjes</h4>
                     <p>Hier kunt u filmpjes voor de website uploaden.</p>
-                    <a href="features-setting-detail.html" class="card-cta">Nieuwsberichten <i class="fas fa-chevron-right"></i></a>
+                    <a href="{{ route('video.index') }}" class="card-cta">Nieuwsberichten <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                   <div class="card-body">
                     <h4>Download documenten</h4>
                     <p>Hier kunt u documenten uploaden.</p>
-                    <a href="features-setting-detail.html" class="card-cta">Oefeningen <i class="fas fa-chevron-right"></i></a>
+                    <a href="{{ route('document.index') }}" class="card-cta">Documenten <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>

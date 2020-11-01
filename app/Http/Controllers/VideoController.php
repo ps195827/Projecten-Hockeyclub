@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sector;
-use App\Models\Subsector;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class SubsectorController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class SubsectorController extends Controller
      */
     public function index()
     {
-        $subsector = Subsector::paginate(100);
-        return view('subsector.index', compact('subsector'));
+        $video = Video::paginate();
+        return view('video.index', compact('video'));
     }
 
     /**
@@ -27,8 +26,7 @@ class SubsectorController extends Controller
      */
     public function create()
     {
-        $sector = Sector::all();
-        return view('subsector.create');
+        return view('video.create');
     }
 
     /**
@@ -40,17 +38,18 @@ class SubsectorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:3',
-            'sector_id' => 'required'
+            'titel' => 'required|min:3',
+            'omschrijving' => 'required' ,
+            'link' => 'required'
         ]);
 
-        $subsector = Subsector::create([ 
-            'name' => $request->name,
-            'sector_id' => $request->sector_id,
-            'slug' => Str::slug($request->name)
+        $video = Video::create([ 
+            'titel' => $request->titel,
+            'omschrijving' => $request->omschrijving,
+            'link' => $request->link
         ]);
 
-        return redirect()->back()->with('success',' Subsector succesvol toegevoegd');
+        return redirect()->back()->with('success',' Video succesvol toegevoegd');
     }
 
     /**
@@ -72,8 +71,8 @@ class SubsectorController extends Controller
      */
     public function edit($id)
     {
-        $subsector = Subsector::findorfail($id);
-        return view('subsector.edit', compact('subsector'));
+        $video = Video::findorfail($id);
+        return view('video.edit', compact('video'));
     }
 
     /**
@@ -86,17 +85,20 @@ class SubsectorController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'titel' => 'required|min:3',
+            'omschrijving' => 'required' ,
+            'link' => 'required'
         ]);
 
-        $subsector_data = [
-            'name' => $request->name,
-            'slug' => Str::slug($request->name)
+        $video_data = [
+            'titel' => $request->titel,
+            'omschrijving' => $request->omschrijving,
+            'link' => $request->link
         ];
 
-        Subsector::whereId($id)->update($subsector_data);
+        Video::whereId($id)->update($video_data);
 
-        return redirect()->route('subsector.index')->with('success',' Subsector succesvol geupgedate');
+        return redirect()->route('video.index')->with('success',' Video succesvol geupgedate');
     }
 
     /**
@@ -107,9 +109,9 @@ class SubsectorController extends Controller
      */
     public function destroy($id)
     {
-        $subsector = Subsector::findorfail($id);
-        $subsector->delete();
+        $video = Video::findorfail($id);
+        $video->delete();
 
-        return redirect()->back()->with('success',' Subsector succesvol verwijderd');
+       return redirect()->back()->with('success',' Video succesvol verwijderd');
     }
 }

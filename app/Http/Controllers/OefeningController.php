@@ -81,8 +81,19 @@ class OefeningController extends Controller
             'filmpje' => 'required'
         ]);
 
-        $afbeelding = $request->file;
-        $new_afbeelding = time().$afbeelding->getClientOriginalName();
+        $input = $request->all();
+        if( $request->hasFile('afbeelding'))
+        {
+            $path = 'public/uploads/oefening/';
+            $afbeelding = $request->file('afbeelding');
+            $new_afbeelding = $afbeelding->getClientOriginalName();
+            $path = $request->file('afbeelding')->storeAs($path,$new_afbeelding);
+
+            $input['afbeelding'] = $new_afbeelding;
+        }
+
+        // $afbeelding = $request->file;
+        // $new_afbeelding = time().$afbeelding->getClientOriginalName();
 
         $oefening = Oefening::create([
             'titel' => $request->titel,
@@ -115,7 +126,7 @@ class OefeningController extends Controller
             'slug' => Str::slug($request->titel)
         ]);
 
-        $afbeelding->move('public/uploads/oefening/', $new_afbeelding);
+        //$afbeelding->move('public/uploads/oefening/', $new_afbeelding);
         return redirect()->route('oefening.index')->with('success','Oefening succesvol toegevoegd');
     }
 

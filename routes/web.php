@@ -45,11 +45,24 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/website', App\Http\Controllers\WebsiteController::class);
     Route::resource('/profiel', App\Http\Controllers\UserController::class);
     Route::resource('/media', App\Http\Controllers\MediaController::class);
-    Route::resource('/media/filmpjes', App\Http\Controllers\MediaController::class);
+    Route::resource('/werkvorm', App\Http\Controllers\WerkvormController::class);
+    Route::resource('/werkvorm', App\Http\Controllers\WerkvormController::class);
+    //Route::resource('/media/filmpjes', App\Http\Controllers\MediaController::class);
+
+    // losse views
+    //Route::view('/media/video/index', 'media.video.index')->name('video_index');
+    Route::resource('/video' , App\Http\Controllers\VideoController::class);
+    Route::resource('/document' , App\Http\Controllers\DocumentController::class);
 
 });
 
 Auth::routes();
+
+// Route::get('/media/video', function () {
+//     return view('media.video.index');
+// });
+
+
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home/category', function () {

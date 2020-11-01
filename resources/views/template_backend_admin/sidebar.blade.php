@@ -20,6 +20,7 @@
                 <li><a class="nav-link" href="{{ route('spelfase.index') }}">Spelfases</a></li>
                 <li><a class="nav-link" href="{{ route('trainingsonderdeel.index') }}">Trainingsonderdelen</a></li>
                 <li><a class="nav-link" href="{{ route('moeilijkheidsgraad.index') }}">Moeilijkheidsgraad</a></li>
+                <li><a class="nav-link" href="{{ route('werkvorm.index') }}">Werkvorm</a></li>
                 <li><hr></li>
                 <li><a class="nav-link" href="{{ route('tag.index') }}">Tags</a></li>
                 <li><a class="nav-link" href="{{ route('category.index') }}">Category lijst</a></li>

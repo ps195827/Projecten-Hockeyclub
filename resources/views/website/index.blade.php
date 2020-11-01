@@ -12,7 +12,7 @@
                   <div class="card-body">
                     <h4>View website</h4>
                     <p>Bekijk de website live.</p>
-                    <a href="features-setting-detail.html" class="card-cta">View website <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="card-cta">View website <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>

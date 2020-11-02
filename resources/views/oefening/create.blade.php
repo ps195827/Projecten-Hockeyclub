@@ -160,7 +160,7 @@
     
 
     
-  <textarea name="editor_content" id="myEditor"></textarea>
+  <!-- <textarea name="editor_content" id="myEditor"></textarea> -->
   
 </form>
 </form>

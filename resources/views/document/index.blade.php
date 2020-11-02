@@ -1,5 +1,5 @@
 @extends('template_backend_admin.home')
-@section('sub-title','Video')
+@section('sub-title','Documenten')
 @section('path')
   <div class="section-header-breadcrumb">
     <nav aria-label="breadcrumb">
@@ -25,7 +25,7 @@
         </div>
     @endif
 
-    <a href="{{ route('document.create') }}" class="btn btn-success btn-sm">Maak nieuwe video aan</a>
+    <a href="{{ route('document.create') }}" class="btn btn-success btn-sm">Maak nieuwe document aan</a>
     <br><br>
 
         <table class="table table-striped table-hover table-sm">
@@ -43,11 +43,11 @@
                     <td>{{ $result + $document->firstitem() }}</td>
                     <td>{{ $resultaat->titel }}</td>
                     <td>{{ $resultaat->link }}</td>
-                    <td><a href="uploads/documenten/{{ $resultaat->link }}" download="{{ $resultaat->link }}">download</a></td>
                     <td> 
                         <form action="{{ route('document.destroy', $resultaat->id )}}" method="POST">
                         @csrf
                         @method('delete')
+                            <a href="uploads/documenten/{{ $resultaat->link }}" download="{{ $resultaat->link }}" class="btn btn-icon"><i class="fas fa-download"></i> download</a>
                             <a href="{{ route('document.edit' , $resultaat->id ) }}" class="btn btn-primary btn-sm">Edit</a>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>

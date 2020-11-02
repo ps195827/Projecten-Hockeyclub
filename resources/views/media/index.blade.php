@@ -22,7 +22,7 @@
                   <div class="card-body">
                     <h4>View media</h4>
                     <p>Bekijk de website live.</p>
-                    <a href="" class="card-cta">View website <i class="fas fa-chevron-right"></i></a>
+                    <a href="" class="card-cta">View media <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -33,8 +33,8 @@
                   </div>
                   <div class="card-body">
                     <h4>Foto's</h4>
-                    <p>Hier kunt u foto's voor de website uploaden.</p>
-                    <a href="features-setting-detail.html" class="card-cta">Contactformulier <i class="fas fa-chevron-right"></i></a>
+                    <p>Hier kunt u media foto's uploaden.</p>
+                    <a href="features-setting-detail.html" class="card-cta">Foto's <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -45,8 +45,8 @@
                   </div>
                   <div class="card-body">
                     <h4>Filmpjes</h4>
-                    <p>Hier kunt u filmpjes voor de website uploaden.</p>
-                    <a href="{{ route('video.index') }}" class="card-cta">Nieuwsberichten <i class="fas fa-chevron-right"></i></a>
+                    <p>Hier kunt u media filmpjes uploaden.</p>
+                    <a href="{{ route('video.index') }}" class="card-cta">Filmpjes <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -56,8 +56,8 @@
                     <i class="far fa-file-word"></i>
                   </div>
                   <div class="card-body">
-                    <h4>Download documenten</h4>
-                    <p>Hier kunt u documenten uploaden.</p>
+                    <h4>Documenten</h4>
+                    <p>Hier downloadbare documenten voor de media uploaden.</p>
                     <a href="{{ route('document.index') }}" class="card-cta">Documenten <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>

@@ -1,5 +1,15 @@
 @extends('template_backend_admin.home')
     @section('sub-title','Domein')
+    @section('path')
+  <div class="section-header-breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Domein</li>
+        </ol>
+    </nav>
+  </div>
+@endsection
     @section('content')
 
     @if(Session::has('success'))

@@ -4,7 +4,7 @@
     <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="{{ url('home') }}">Dashboard</a></div>
         <div class="breadcrumb-item active"><a href="{{ route('moeilijkheidsgraad.index') }}">Moeilijkheidsgraad</a></div>
-        <div class="breadcrumb-item">Edit</div>
+        <div class="breadcrumb-item">Edit moeilijkheidsgraad</div>
     </div>
 @endsection
 @section('content')

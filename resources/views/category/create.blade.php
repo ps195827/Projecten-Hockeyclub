@@ -1,5 +1,16 @@
 @extends('template_backend_admin.home')
 @section('sub-title','Nieuwe Category')
+@section('path')
+  <div class="section-header-breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Category</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create category</li>
+        </ol>
+    </nav>
+  </div>
+@endsection
 @section('content')
 
 

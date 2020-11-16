@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\Moeilijkheidsgraad;
 use App\Models\Oefening;
-use App\Models\Doelgroep;
+use App\Models\Werkvorm;
 use App\Models\Domein;
 use App\Models\Leerfase;
 use App\Models\Sector;
@@ -34,15 +35,15 @@ class OefeningController extends Controller
      */
     public function create()
     {
+        $werkvorm = Werkvorm::all();
+        $moeilijkheidsgraad = Moeilijkheidsgraad::all();
         $leerfase = Leerfase::all();
         $sector = Sector::all();
         $subsector = Subsector::all();
         $domein = Domein::all();
-        $doelgroep = Doelgroep::all();
         $spelfase = Spelfase::all();
         $trainingsonderdeel = Trainingsonderdeel::all();
-        $doelgroep = Doelgroep::all();
-        return view('oefening.create', compact('domein','sector','subsector','leerfase','spelfase','trainingsonderdeel','doelgroep'));
+        return view('oefening.create', compact('domein','sector','subsector','leerfase','spelfase','trainingsonderdeel','moeilijkheidsgraad','werkvorm'));
     }
 
     /**
@@ -57,43 +58,10 @@ class OefeningController extends Controller
             'titel' => 'required',
             'domein_id' => 'required',
             'sector_id' => 'required',
-            'subsector_id' => 'required',
             'leerfase_id' => 'required',
-            'moeilijkheidsgraad' => 'required',
-            'beschrijving' => 'required',
-            'spelfase_id' => 'required',
-            'trainingsonderdeel_id' => 'required',
-            'minimalegroepsgrootte' => 'required',
-            'maximalegroepsgrootte' => 'required',
-            'duur' => 'required',
-            'organisatie' => 'required',
-            'keeper' => 'required',
-            'hesjes' => 'required',
-            'pilonnen' => 'required',
-            'dopjes' => 'required',
-            'goaltjes' => 'required',
-            'goals' => 'required',
-            'hulpmiddelen' => 'required',
-            'aandachtspunten' => 'required',
-            'fouten' => 'required',
-            'verzwaring' => 'required',
-            'doelgroep_id' => 'required',
-            'filmpje' => 'required'
+            'moeilijkheidsgraad_id' => 'required',
+            'duur' => 'required'
         ]);
-
-        $input = $request->all();
-        if( $request->hasFile('afbeelding'))
-        {
-            $path = 'public/uploads/oefening/';
-            $afbeelding = $request->file('afbeelding');
-            $new_afbeelding = $afbeelding->getClientOriginalName();
-            $path = $request->file('afbeelding')->storeAs($path,$new_afbeelding);
-
-            $input['afbeelding'] = $new_afbeelding;
-        }
-
-        // $afbeelding = $request->file;
-        // $new_afbeelding = time().$afbeelding->getClientOriginalName();
 
         $oefening = Oefening::create([
             'titel' => $request->titel,
@@ -101,32 +69,24 @@ class OefeningController extends Controller
             'sector_id' => $request->sector_id,
             'subsector_id' => $request->subsector_id,
             'leerfase_id' => $request->leerfase_id,
-            'moeilijkheidsgraad' => $request->moeilijkheidsgraad,
+            'moeilijkheidsgraad_id' => $request->moeilijkheidsgraad_id,
             'beschrijving' => $request->beschrijving,
             'spelfase_id' => $request->spelfase_id,
             'trainingsonderdeel_id' => $request->trainingsonderdeel_id,
-            'minimalegroepsgrootte' => $request->minimalegroepsgrootte,
-            'maximalegroepsgrootte' => $request->maximalegroepsgrootte,
             'duur' => $request->duur,
-            'organisatie' => $request->organisatie,
-            'keeper' => $request->keeper,
-            'hesjes' => $request->hesjes,
-            'pilonnen' => $request->pilonnen,
-            'dopjes' => $request->dopjes,
-            'goaltjes' => $request->goaltjes,
-            'goals' => $request->goals,
             'hulpmiddelen' => $request->hulpmiddelen,
             'aandachtspunten' => $request->aandachtspunten,
+            'werkvorm_id' => $request->werkvorm_id,
             'fouten' => $request->fouten,
-            'verzwaring' => $request->verzwaring,
-            'doelgroep_id' => $request->doelgroep_id,
             'filmpje' => $request->filmpje,
-            'afbeelding' => 'public/uploads/oefening/'.$new_afbeelding,
+            'afbeelding' => $request->afbeelding,
+            'makkelijkmaken' => $request->makkelijkmaken,
+            'moeilijkmaken' => $request->moeilijkmaken,
+            'tips' => $request->tips,
             'auteur' => Auth::id(),
             'slug' => Str::slug($request->titel)
         ]);
 
-        //$afbeelding->move('public/uploads/oefening/', $new_afbeelding);
         return redirect()->route('oefening.index')->with('success','Oefening succesvol toegevoegd');
     }
 
@@ -138,7 +98,11 @@ class OefeningController extends Controller
      */
     public function show($id)
     {
-        //
+        $oefening = Oefening::find($id);
+
+        $moeilijkheidsgraad = Moeilijkheidsgraad::all();
+
+        return view('oefening.show')->with('oefening', $oefening);
     }
 
     /**

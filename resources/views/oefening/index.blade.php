@@ -1,5 +1,15 @@
 @extends('template_backend_admin.home')
     @section('sub-title','Oefeningen')
+    @section('path')
+        <div class="section-header-breadcrumb">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Oefeningen</li>
+                </ol>
+            </nav>
+        </div>
+    @endsection
     @section('content')
 
     @if(Session::has('success'))
@@ -14,21 +24,16 @@
     @endif
 
     <a href="{{ route('oefening.create') }}" class="btn btn-success btn-sm">Maak nieuwe oefening aan</a>
-    <button onclick="window.print()" class="btn btn-danger btn-sm">Print</button>
-    <script type="text/javascript">
-        $(document).ready(function(){
-        $('.btnprn').printPage();
-        });
-    </script>
     <br><br>
-
+    <div class="table-responsive">
         <table class="table table-striped table-hover table-sm">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Titel</th>
                     <th>Domein</th>
-                    <th>Doelgroep</th>
+                    <th>Sector</th>
+                    <th>Subsector</th>
                     <th>Datum</th>
                     <th>Auteur</th>
                     <th>Action</th>
@@ -40,7 +45,8 @@
                     <td>{{ $result + $oefening->firstitem() }}</td>
                     <td>{{ $resultaat->titel }}</td>
                     <td>{{ $resultaat->domein['name'] }}</td>
-                    <td>{{ $resultaat->doelgroep['name'] }}</td>
+                    <td>{{ $resultaat->sector['name'] }}</td>
+                    <td>{{ $resultaat->subsector['name'] }}</td>
                     <td>{{ $resultaat->created_at->format('d-m-y') }}</td>
                     <td>{{ $resultaat->users['name'] }}</td>
                     <td> 
@@ -56,6 +62,6 @@
             @endforeach
             </tbody>
         </table>
+    </div>
         {{ $oefening->links() }}
-
 @endsection

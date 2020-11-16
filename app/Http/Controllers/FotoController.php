@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subsector;
+use App\Models\Foto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class SubsectorController extends Controller
+class FotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class SubsectorController extends Controller
      */
     public function index()
     {
-        $subsector = Subsector::paginate(100);
-        return view('subsector.index', compact('subsector'));
+        $foto = Foto::paginate(10);
+        return view('foto.index', compact('foto'));
     }
 
     /**
@@ -26,7 +26,7 @@ class SubsectorController extends Controller
      */
     public function create()
     {
-        return view('subsector.create');
+        return view('foto.create');
     }
 
     /**
@@ -38,15 +38,22 @@ class SubsectorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'titel' => 'required|max:255',
+            'omschrijving' => 'required',
+            'image' => 'required'
+        ]);
+        
+        $image = $request->file('image');
+        $image_name = time().'.'.$request->image->extension();
+              
+        $foto = Foto::create([ 
+            'titel' => $request->titel,
+            'omschrijving' => $request->omschrijving,
+            'image' => 'uploads/foto/'.$image_name
         ]);
 
-        $subsector = Subsector::create([ 
-            'name' => $request->name,
-            'slug' => Str::slug($request->name)
-        ]);
-
-        return redirect()->back()->with('success',' Subsector succesvol toegevoegd');
+        $request->image->move(public_path('uploads/foto/'), $image_name);
+        return redirect()->back()->with('success',' Foto succesvol toegevoegd');
     }
 
     /**
@@ -68,8 +75,7 @@ class SubsectorController extends Controller
      */
     public function edit($id)
     {
-        $subsector = Subsector::findorfail($id);
-        return view('subsector.edit', compact('subsector'));
+        //
     }
 
     /**
@@ -81,18 +87,7 @@ class SubsectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
-        $subsector_data = [
-            'name' => $request->name,
-            'slug' => Str::slug($request->name)
-        ];
-
-        Subsector::whereId($id)->update($subsector_data);
-
-        return redirect()->route('subsector.index')->with('success',' Subsector succesvol geupgedate');
+        //
     }
 
     /**
@@ -103,9 +98,6 @@ class SubsectorController extends Controller
      */
     public function destroy($id)
     {
-        $subsector = Subsector::findorfail($id);
-        $subsector->delete();
-
-        return redirect()->back()->with('success',' Subsector succesvol verwijderd');
+        //
     }
 }

@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Oefening extends Model
 {
-    protected $fillable = ['titel','domein_id','sector_id','subsector_id','leerfase_id','moeilijkheidsgraad',
-      'beschrijving','intensiteit_id','spelfase_id','trainingsonderdeel_id','uitvoering_id',
-      'minimaleveldoppervlak_id','minimalegroepsgrootte','maximalegroepsgrootte','duur','organisatie',
-      'keeper','hesjes','pilonnen','dopjes','goaltjes','goals','hulpmiddelen','aandachtspunten','fouten',
-      'verzwaring','doelgroep_id','filmpje','afbeelding','auteur','slug'];
+    protected $fillable = ['titel','domein_id','sector_id','subsector_id','leerfase_id','moeilijkheidsgraad_id',
+      'beschrijving','spelfase_id','trainingsonderdeel_id','duur','hulpmiddelen','aandachtspunten','werkvorm_id',
+      'fouten','filmpje','afbeelding','makkelijkmaken','moeilijkmaken','tips','auteur','slug'];
 
     protected $table = 'oefening';
 
@@ -47,12 +45,16 @@ class Oefening extends Model
         return $this->belongsTo('App\Models\uitvoering');
     }
 
-    public function doelgroep(){
-        return $this->belongsTo('App\Models\doelgroep');
-    }
-
     public function users() {
         return $this->belongsTo('App\Models\User','auteur','id');
+    }
+
+    public function moeilijkheidsgraad() {
+        return $this->belongsTo('App\Models\Moeilijkheidsgraad');
+    }
+
+    public function werkvorm(){
+        return $this->belongsTo('App\Models\Werkvorm');
     }
 
     public function getRouteKeyName()

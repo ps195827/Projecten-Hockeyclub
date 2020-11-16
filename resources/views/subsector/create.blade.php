@@ -1,5 +1,16 @@
 @extends('template_backend_admin.home')
 @section('sub-title','Nieuwe Subsector')
+@section('path')
+  <div class="section-header-breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('subsector.index') }}">Subsectoren</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create Sector</li>
+        </ol>
+    </nav>
+  </div>
+@endsection
 @section('content')
 
 
@@ -30,19 +41,8 @@
     </div>
 
     <div class="form-group">
-        <label>Sector</label>
-        <select class="form-control" name="sector_id">
-        <option value="" holder>Kies een sector</option>
-            @foreach($sector as $result)
-                <option value="{{ $result->id }}">{{ $result->name }}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="form-group">
         <input type="submit" class="btn btn-primary btn-block" value="Nieuwe subsector toevoegen">
     </div>
 </form>
-
 
 @endsection

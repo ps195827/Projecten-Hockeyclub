@@ -1,5 +1,16 @@
 @extends('template_backend_admin.home')
 @section('sub-title','Edit Subsector')
+@section('path')
+  <div class="section-header-breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('subsector.index') }}">Subsectoren</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Subsector</li>
+        </ol>
+    </nav>
+  </div>
+@endsection
 @section('content')
 
 
@@ -15,7 +26,7 @@
     @csrf
     @method('patch')
     <div class="form-group">
-        <label>Category</label>
+        <label>Subsector</label>
         <input type="text" class="form-control" name="name" value="{{ $subsector->name }}">
     </div>
 

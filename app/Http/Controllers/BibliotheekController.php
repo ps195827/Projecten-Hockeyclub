@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subsector;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class SubsectorController extends Controller
+use App\Models\Foto;
+use App\Models\Document;
+use App\Models\Video;
+
+
+class BibliotheekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,10 @@ class SubsectorController extends Controller
      */
     public function index()
     {
-        $subsector = Subsector::paginate(100);
-        return view('subsector.index', compact('subsector'));
+        $foto = Foto::all();
+        $document = Document::all();
+        $video = Video::all();
+        return view('bibliotheek.index');
     }
 
     /**
@@ -26,7 +31,7 @@ class SubsectorController extends Controller
      */
     public function create()
     {
-        return view('subsector.create');
+        //
     }
 
     /**
@@ -37,16 +42,7 @@ class SubsectorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
-        $subsector = Subsector::create([ 
-            'name' => $request->name,
-            'slug' => Str::slug($request->name)
-        ]);
-
-        return redirect()->back()->with('success',' Subsector succesvol toegevoegd');
+        //
     }
 
     /**
@@ -68,8 +64,7 @@ class SubsectorController extends Controller
      */
     public function edit($id)
     {
-        $subsector = Subsector::findorfail($id);
-        return view('subsector.edit', compact('subsector'));
+        //
     }
 
     /**
@@ -81,18 +76,7 @@ class SubsectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
-        $subsector_data = [
-            'name' => $request->name,
-            'slug' => Str::slug($request->name)
-        ];
-
-        Subsector::whereId($id)->update($subsector_data);
-
-        return redirect()->route('subsector.index')->with('success',' Subsector succesvol geupgedate');
+        //
     }
 
     /**
@@ -103,9 +87,6 @@ class SubsectorController extends Controller
      */
     public function destroy($id)
     {
-        $subsector = Subsector::findorfail($id);
-        $subsector->delete();
-
-        return redirect()->back()->with('success',' Subsector succesvol verwijderd');
+        //
     }
 }

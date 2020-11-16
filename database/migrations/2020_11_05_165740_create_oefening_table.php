@@ -20,35 +20,24 @@ class CreateOefeningTable extends Migration
             $table->string('sector_id');
             $table->string('subsector_id');
             $table->string('leerfase_id');
-            $table->string('moeilijkheidsgraad');
+            $table->string('moeilijkheidsgraad_id');
             $table->text('beschrijving');
-            $table->string('intensiteit_id');
             $table->string('spelfase_id');
             $table->string('trainingsonderdeel_id');
-            $table->string('uitvoering_id');
-            $table->string('minimaleveldoppervlak_id');
-            $table->string('minimalegroepsgrootte');
-            $table->string('maximalegroepsgrootte');
             $table->string('duur');
-            $table->text('organisatie');
-            $table->string('keeper');
-            $table->string('hesjes');
-            $table->string('pilonnen');
-            $table->string('dopjes');
-            $table->string('goaltjes');
-            $table->string('goals');
-            $table->string('hulpmiddelen');
+            $table->text('hulpmiddelen');
             $table->text('aandachtspunten');
+            $table->string('werkvorm_id');
             $table->text('fouten');
-            $table->string('verzwaring');
-            $table->string('doelgroep_id');
-            $table->string('filmpje');
+            $table->text('makkelijkmaken');
+            $table->text('moeilijkmaken');
+            $table->text('tips');
             $table->string('afbeelding');
+            $table->string('filmpje');
             $table->string('slug');
             $table->string('auteur');
             $table->timestamps();
-    });
-            
+        });
     }
 
     /**

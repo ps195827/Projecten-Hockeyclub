@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subsector extends Model
 {
-    protected $fillable = ['name','sector_id'];
+    protected $fillable = ['name','slug'];
 
     protected $table = 'subsector';
     // use HasFactory;
 
-    public function Sector(){
-        return $this->belongsTo('App\Models\Sector');
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

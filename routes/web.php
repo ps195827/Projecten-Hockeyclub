@@ -44,15 +44,21 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/oefening', App\Http\Controllers\OefeningController::class);
     Route::resource('/website', App\Http\Controllers\WebsiteController::class);
     Route::resource('/profiel', App\Http\Controllers\UserController::class);
-    Route::resource('/media', App\Http\Controllers\MediaController::class);
     Route::resource('/werkvorm', App\Http\Controllers\WerkvormController::class);
-    Route::resource('/werkvorm', App\Http\Controllers\WerkvormController::class);
+
+    Route::resource('/video' , App\Http\Controllers\VideoController::class);
+    Route::resource('/document' , App\Http\Controllers\DocumentController::class);
+    Route::resource('/foto' , App\Http\Controllers\FotoController::class);
+    Route::resource('/bibliotheek' , App\Http\Controllers\BibliotheekController::class);
     //Route::resource('/media/filmpjes', App\Http\Controllers\MediaController::class);
 
     // losse views
     //Route::view('/media/video/index', 'media.video.index')->name('video_index');
-    Route::resource('/video' , App\Http\Controllers\VideoController::class);
-    Route::resource('/document' , App\Http\Controllers\DocumentController::class);
+    Route::view('/help', 'help.index')->name('help_index');
+    
+    Route::resource('/media', App\Http\Controllers\MediaController::class);
+
+    
 
 });
 

@@ -26,7 +26,7 @@
     @csrf
     @method('patch')
     <div class="form-group">
-        <label>Category</label>
+        <label>Domein</label>
         <input type="text" class="form-control" name="name" value="{{ $domein->name }}">
     </div>
 

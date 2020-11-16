@@ -1,6 +1,6 @@
       <footer class="main-footer">
             <div class="footer-left">
-                Copyright &copy; 2020 <div class="bullet"></div> Design and Develop By Summa college
+                Copyright &copy; 2020 HCAS <div class="bullet"></div> Design and Develop By Summa college
             </div>
             <div class="footer-right">
                  Sponsoren:   <a href="#">BAA-kennis van zaken</a> <div class="bullet"></div> <a href="#">Rabobank</a> <div class="bullet"></div> <a href="#">Summa College</a>
@@ -20,6 +20,8 @@
   <script src="/assets/modules/select2/dist/js/select2.full.min.js"></script>
   
   <!-- JS Libraies -->
+
+  <script src="/assets/js/page/bootstrap-modal.js"></script>
 
   <!-- Page Specific JS File -->
   

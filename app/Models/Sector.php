@@ -15,8 +15,4 @@ class Sector extends Model
     {
         return 'slug';
     }
-
-    public function Subsector(){
-        return $this->hasMany('App\Models\Subsector');
-    }
 }

@@ -13,14 +13,12 @@ class CreateSubsectorTable extends Migration
      */
     public function up()
     {
-        // Schema::create('subsector', function (Blueprint $table) {
-        //     Schema::create('subsector', function (Blueprint $table) {
-        //         $table->bigIncrements('id');
-        //         $table->string('name');
-        //         $table->string('sector_id');
-        //         $table->timestamps();
-        //     });
-        // });
+        Schema::create('subsector', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('slug');
+            $table->timestamps();
+        });
     }
 
     /**

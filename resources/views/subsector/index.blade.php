@@ -1,5 +1,15 @@
 @extends('template_backend_admin.home')
-    @section('sub-title','Subsector')
+@section('sub-title','Subsector')
+@section('path')
+  <div class="section-header-breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Subsectoren</li>
+        </ol>
+    </nav>
+  </div>
+@endsection
     @section('content')
 
     @if(Session::has('success'))
@@ -21,7 +31,6 @@
                 <tr>
                     <th>No</th>
                     <th>Subsector</th>
-                    <th>Sector</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -30,7 +39,6 @@
                 <tr>
                     <td>{{ $result + $subsector->firstitem() }}</td>
                     <td>{{ $resultaat->name }}</td>
-                    <td>{{ $resultaat->sector['name'] }}</td>
                     <td> 
                         <form action="{{ route('subsector.destroy', $resultaat->id )}}" method="POST">
                         @csrf

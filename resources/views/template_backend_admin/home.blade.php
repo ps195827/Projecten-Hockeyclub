@@ -53,7 +53,7 @@
               <a href="{{ route('profiel.index') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <a href="{{ route('help_index') }}" class="dropdown-item has-icon">
                 <i class="fas fa-info-circle"></i> Help
               </a>
               <div class="dropdown-divider"></div>

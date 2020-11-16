@@ -21,8 +21,8 @@
                   </div>
                   <div class="card-body">
                     <h4>View media</h4>
-                    <p>Bekijk de website live.</p>
-                    <a href="" class="card-cta">View media <i class="fas fa-chevron-right"></i></a>
+                    <p>Bekijk de media live.</p>
+                    <a href="{{ route('bibliotheek.index') }}" class="card-cta">View media <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -34,7 +34,7 @@
                   <div class="card-body">
                     <h4>Foto's</h4>
                     <p>Hier kunt u media foto's uploaden.</p>
-                    <a href="features-setting-detail.html" class="card-cta">Foto's <i class="fas fa-chevron-right"></i></a>
+                    <a href="{{ route('foto.index') }}" class="card-cta">Foto's <i class="fas fa-chevron-right"></i></a>
                   </div>
                 </div>
               </div>

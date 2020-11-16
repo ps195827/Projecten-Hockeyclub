@@ -1,12 +1,13 @@
 @extends('template_backend_admin.home')
-@section('sub-title','Nieuwe Trainingsonderdeel')
+@section('sub-title','Nieuwe Foto')
 @section('path')
   <div class="section-header-breadcrumb">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('trainingsonderdeel.index') }}">Trainingsonderdeel</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Create Trainingsonderdeel</li>
+            <li class="breadcrumb-item"><a href="{{ route('media.index') }}">Media</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('foto.index') }}">Foto</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Nieuwe Foto</li>
         </ol>
     </nav>
   </div>
@@ -33,15 +34,25 @@
         </div>
     @endif
 
-    <form action="{{ route('trainingsonderdeel.store') }}" method="POST">
+    <form action="{{ route('foto.store') }}" enctype="multipart/form-data" method="POST">
     @csrf
     <div class="form-group">
-        <label>Trainingsonderdeel</label>
-        <input type="text" class="form-control" name="name">
+        <label>Titel</label>
+        <input type="text" class="form-control" name="titel">
     </div>
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary btn-block" value="Nieuwe trainingsonderdeel toevoegen">
+        <label>Omschrijving</label>
+        <input type="text" class="form-control" name="omschrijving">
+    </div>
+
+    <div class="form-group">
+        <label>Foto</label>
+        <input type="file" class="form-control" name="image">
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-block" value="Nieuwe Foto toevoegen">
     </div>
 </form>
 

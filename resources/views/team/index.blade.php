@@ -35,6 +35,7 @@
                         <form action="{{ route('team.destroy', $resultaat->id )}}" method="POST">
                         @csrf
                         @method('delete')
+                        <a href="{{ route('team.show' , $resultaat->id ) }}" class="btn btn-sm">Details</a>
                             <a href="{{ route('team.edit' , $resultaat->id ) }}" class="btn btn-primary btn-sm">Edit</a>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>

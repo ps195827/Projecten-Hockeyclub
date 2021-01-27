@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Oefening extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = ['titel','domein_id','sector_id','subsector_id','leerfase_id','moeilijkheidsgraad_id',
       'beschrijving','spelfase_id','trainingsonderdeel_id','duur','hulpmiddelen','aandachtspunten','werkvorm_id',
       'fouten','filmpje','afbeelding','makkelijkmaken','moeilijkmaken','tips','auteur','slug'];
@@ -57,8 +60,7 @@ class Oefening extends Model
         return $this->belongsTo('App\Models\Werkvorm');
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
+    public function doelgroep(){
+        return $this->belongsToMany('App\Models\Doelgroep');
     }
 }

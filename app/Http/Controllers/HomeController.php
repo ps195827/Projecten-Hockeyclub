@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use App\Models\Training;
+use App\Models\Melding;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -13,8 +17,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
-        return view('home');
+        $oefeningcount = DB::table('oefening')->count();
+        $teamcount = DB::table('team')->count();
+        $trainingcount = DB::table('training')->count();
+        $spelercount = DB::table('users')->where('role', 1)->count();
+        
+
+        $training = Training::select("*")
+            ->orderByDesc("created_at")
+            ->limit("10")
+            ->get();
+
+        $melding = Melding::select("*")
+            ->orderByDesc("created_at")
+            ->limit("3")
+            ->get();
+  
+
+        return view('home', compact('training', 'melding') ,['oefeningcount' => $oefeningcount, 'teamcount' => $teamcount , 'trainingcount' => $trainingcount , 'spelercount' => $spelercount]);
     }
 
     /**

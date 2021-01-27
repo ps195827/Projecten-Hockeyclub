@@ -1,10 +1,10 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">HCAS</a>
+            <a href="{{ url('home') }}">HCAS</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">HCAS</a>
+            <a href="{{ url('home') }}">HCAS</a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
@@ -23,32 +23,30 @@
                 <li><a class="nav-link" href="{{ route('werkvorm.index') }}">Werkvorm</a></li>
                 <li><hr></li>
                 <li><a class="nav-link" href="{{ route('tag.index') }}">Tags</a></li>
-                <li><a class="nav-link" href="{{ route('category.index') }}">Category lijst</a></li>
               </ul>
             </li>
             <li class="dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dumbbell"></i> <span>Oefeningen</span></a>
             <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{ route('oefening.index') }}">Oefeningen lijst</a></li>
-                <li><a class="nav-link" href="">Verwijderde oefeningen</a></li>
+                <li><a class="nav-link" href="{{route('oefening.index_delete')}}">Verwijderde oefeningen</a></li>
               </ul>
             </li>
             <li class="menu-header">Trainingen</li>
             <li class="dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-running"></i> <span>Trainingen</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="">Trainingen lijst</a></li>
+                <li><a class="nav-link" href="{{ route('training.index') }}">Trainingen lijst</a></li>
               </ul>
             </li>
             <li class="menu-header">Personen</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Gebruikers</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="">administrator lijst</a></li>
-                <li><a class="nav-link" href="">Auteur lijst</a></li>
-                <li><a class="nav-link" href="">Coach lijst</a></li>
-                <li><a class="nav-link" href="">Speler lijst</a></li>
-                <li><a class="nav-link" href="">Verwijderde spelers</a></li>
+                <li><a class="nav-link" href="{{ route('admin.index') }}">Administrator lijst</a></li>
+                <li><a class="nav-link" href="{{ route('auteur.index') }}">Auteur lijst</a></li>
+                <li><a class="nav-link" href="{{ route('trainer.index') }}">Trainer lijst</a></li>
+                <li><a class="nav-link" href="{{ route('speler.index') }}">Speler lijst</a></li>
               </ul>
             </li>
             <li class="menu-header">Onderwerpen</li>
@@ -60,15 +58,19 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i> <span>Meldingen</span></a>
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i> <span>Mededelingen</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="">Bericht verzenden trainer</a></li>
-                <li><a class="nav-link" href="">Bericht verzenden speler</a></li>
-                <li><a class="nav-link" href="">Lijst meldingen trainers</a></li>
-                <li><a class="nav-link" href="">Lijst meldingen spelers</a></li>
+                <li><a class="nav-link" href="{{ route('mededeling.index') }}">Mededelingen doen</a></li>
+                <li><a class="nav-link" href="{{ route('melding.index') }}">Meldingen</a></li>
               </ul>
             </li>
-            <li><a class="nav-link" href="{{ route('media.index') }}"><i class="fas fa-file-image"></i> <span>Media</span></a></li>
-            <li><a class="nav-link" href="{{ route('website.index') }}"><i class="fab fa-html5"></i> <span>Website</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-book-open"></i> <span>Bibliotheek</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{{ route('media.index') }}">Media</a></li>
+                <li><a class="nav-link" href="{{ route('category.index') }}">Category lijst</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link" href="{{ route('website.index') }}"><i class="fas fa-info"></i> <span>Informatie</span></a></li>
         </aside>
       </div>

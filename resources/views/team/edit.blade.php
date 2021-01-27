@@ -38,16 +38,5 @@
     </div>
 </form>
 
-<div class="col-12">
-  <div class="col-md-4">
-    <img class="" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" width="448" height="299" alt="Woman paying for a purchase">
-  </div>
-  <div class="col-md-8">
-    <div class="">Marketing</div>
-    <a href="#" class="">Finding customers for your new business</a>
-    <p class="">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
-  </div>
-</div>
-
 
 @endsection

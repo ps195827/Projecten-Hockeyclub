@@ -15,7 +15,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $document = Document::paginate(10);
+        $document = Document::paginate();
         return view('document.index', compact('document'));
     }
 
@@ -37,66 +37,21 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'link' => 'required|max:2048',
-    
+        $this->validate($request, [
+            'titel' => 'required',
+            'link' => 'required',
+        ]);
+
+        $link = $request->file('link');
+        $link_name = time().'.'.$request->link->extension();
+
+        $document = Document::create([
+            'titel' => $request->titel,
+            'link' => 'uploads/documenten/'.$link_name
         ]);
     
-           $titel = $request->file('image')->getClientOriginalName();
-    
-           $link = $request->file('image')->store('public/images');
-    
-    
-           $save = new Photo;
-    
-           $save->titel = $titel;
-           $save->link = $link;
-    
-           return redirect()->route('document.index')->with('success','De post is succesvol toegevoegd');
-    
-
-
-
-
-        // $this->validate($request, [
-        //     'titel' => 'required'
-        // ]);
-
-        // $image = $request->file('link');
-        // $imageName = time(). '.' . $image->extension();
-        // $image->move(public_path('images'),$imageName);
-
-
-        // $post = Posts::create([
-        //     'titel' => $request->titel,
-        //     'link' => 'public/uploads/documenten/'.$imageName
-        // ]);
-
-        // $post->tags()->attach($request->tags);
-
-        // //$afbeelding->move('public/uploads/documenten/', $new_afbeelding);
-        // return redirect()->route('document.index')->with('success','De post is succesvol toegevoegd');
-    
-         
-
-
-
-
-        // $document = new Document;
-        // if($request->link('link')){
-        //     $link=$request->file('link');
-        //     $filename=time().'.'.$link->getClientOriginalExtension();
-        //     $request->link->move('public/uploads/documenten/'.$filename);
-
-        //     $document->link = $filename;
-        // }
-
-        // $document->titel=$request->titel;
-        // $document->save();
-
-
-        //$file->move('public/uploads/documenten/', $new_file);
-        //return redirect()->route('document.index')->with('success','Document succesvol toegevoegd');
+        $request->link->move(public_path('uploads/documenten/'), $link_name);
+        return redirect()->route('document.index')->with('success','De post is succesvol toegevoegd');
     }
 
     /**

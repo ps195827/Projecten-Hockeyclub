@@ -25,7 +25,7 @@
 
     <a href="{{ route('oefening.create') }}" class="btn btn-success btn-sm">Maak nieuwe oefening aan</a>
     <br><br>
-    <div class="table-responsive">
+    
         <table class="table table-striped table-hover table-sm">
             <thead>
                 <tr>
@@ -35,6 +35,7 @@
                     <th>Sector</th>
                     <th>Subsector</th>
                     <th>Datum</th>
+                    <th>Doelgroep</th>
                     <th>Auteur</th>
                     <th>Action</th>
                 </tr>
@@ -47,21 +48,33 @@
                     <td>{{ $resultaat->domein['name'] }}</td>
                     <td>{{ $resultaat->sector['name'] }}</td>
                     <td>{{ $resultaat->subsector['name'] }}</td>
-                    <td>{{ $resultaat->created_at->format('d-m-y') }}</td>
+                    <td>{{ $resultaat->created_at->format('d-m-y ') }}</td>
+                    <td>
+                    @foreach($resultaat->doelgroep as $doelgroeps)
+                        {{ $doelgroeps->name }},
+                    @endforeach
+                    </td>
                     <td>{{ $resultaat->users['name'] }}</td>
                     <td> 
                         <form action="{{ route('oefening.destroy', $resultaat->id )}}" method="POST">
                         @csrf
                         @method('delete')
-                           <a href="{{ route('oefening.show' , $resultaat->id ) }}" class="btn btn-success btn-sm">Details</a>
-                            <a href="{{ route('oefening.edit' , $resultaat->id ) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <span class="d-inline-block" data-toggle="tooltip" data-title="Details">
+                                <a href="{{ route('oefening.show' , $resultaat->id ) }}" class="btn btn-sm btn-icon btn-success"><i class="fas fa-info-circle"></i></a>
+                            </span>
+                            <span class="d-inline-block" data-toggle="tooltip" data-title="Edit">
+                                <a href="{{ route('oefening.edit' , $resultaat->id ) }}" class="btn btn-sm btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                            </span>
+                            <span class="d-inline-block" data-toggle="tooltip" data-title="Delete">
+                                <button type="submit" class="btn btn-sm btn-icon btn-danger"><i class="far fa-trash-alt"></i></button>
+                            </span>
+                            
                         </form>
                     </td>
                 </tr> 
             @endforeach
             </tbody>
         </table>
-    </div>
         {{ $oefening->links() }}
+    
 @endsection

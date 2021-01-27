@@ -28,7 +28,7 @@ Route::redirect('/', '/login');
 // });
 
 Route::group(['middleware' => 'auth'], function(){
-
+    //Route::resource('/home', App\Http\Controllers\HomeController::class);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
     Route::resource('/domein', App\Http\Controllers\DomeinController::class);
     Route::resource('/sector', App\Http\Controllers\SectorController::class);
@@ -43,21 +43,44 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/moeilijkheidsgraad', App\Http\Controllers\MoeilijkheidsgraadController::class);
     Route::resource('/oefening', App\Http\Controllers\OefeningController::class);
     Route::resource('/website', App\Http\Controllers\WebsiteController::class);
-    Route::resource('/profiel', App\Http\Controllers\UserController::class);
     Route::resource('/werkvorm', App\Http\Controllers\WerkvormController::class);
+    Route::resource('/profiel', App\Http\Controllers\UserController::class);
+    Route::resource('/mededeling', App\Http\Controllers\MededelingController::class);
+    Route::resource('/melding', App\Http\Controllers\MeldingController::class);
+    Route::resource('/training', App\Http\Controllers\TrainingController::class);
+    Route::resource('/admin', App\Http\Controllers\AdminController::class);
+    Route::resource('/auteur', App\Http\Controllers\AuteurController::class);
+    Route::resource('/trainer', App\Http\Controllers\TrainerController::class);
+    Route::resource('/speler', App\Http\Controllers\SpelerController::class);
 
-    Route::resource('/video' , App\Http\Controllers\VideoController::class);
+    
     Route::resource('/document' , App\Http\Controllers\DocumentController::class);
     Route::resource('/foto' , App\Http\Controllers\FotoController::class);
     Route::resource('/bibliotheek' , App\Http\Controllers\BibliotheekController::class);
-    //Route::resource('/media/filmpjes', App\Http\Controllers\MediaController::class);
+    Route::resource('/video', App\Http\Controllers\VideoController::class);
+    Route::resource('/media', App\Http\Controllers\MediaController::class);
+
+
+    Route::get('/oefeningdelete', [App\Http\Controllers\OefeningController::class, 
+        'index_delete'])->name('oefening.index_delete');
+    Route::get('/oefening/restore/{id}', [App\Http\Controllers\OefeningController::class, 
+         'restore'])->name('oefening.restore');
+    Route::delete('/oefening/kill/{id}', [App\Http\Controllers\OefeningController::class, 
+         'kill'])->name('oefening.kill');
+   
+
+
+    Route::get('/test', [App\Http\Controllers\TestController::class, 'querybuilder'])->name('student.innerjoin');
+
+    // Route::name('media.')->group(function () {
+    //     Route::get('media', function () {
+    //         Route::resource('/media/video' , App\Http\Controllers\VideoController::class);
+    //     })->name('media');
+    // });
 
     // losse views
     //Route::view('/media/video/index', 'media.video.index')->name('video_index');
     Route::view('/help', 'help.index')->name('help_index');
-    
-    Route::resource('/media', App\Http\Controllers\MediaController::class);
-
     
 
 });

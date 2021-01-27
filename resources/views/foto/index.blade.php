@@ -41,7 +41,7 @@
                 <tr>
                     <td>{{ $result + $foto->firstitem() }}</td>
                     <td>{{ $resultaat->titel }}</td>
-                    <td><img src="{{ asset( $resultaat->image) }}" class="img-fluid" style="width:50px;"></td>
+                    <td><img src="{{ asset( $resultaat->image) }}" class="img-fluid" style="width:50px;height:50px;"></td>
                     <td> 
                         <form action="{{ route('foto.destroy', $resultaat->id )}}" method="POST">
                         @csrf

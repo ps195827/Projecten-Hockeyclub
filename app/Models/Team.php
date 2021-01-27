@@ -14,4 +14,8 @@ class Team extends Model
     public function doelgroep(){
         return $this->belongsTo('App\Models\Doelgroep');
     }
+
+    public function user(){
+        return $this->belongsToMany('App\Models\User');
+    }
 }

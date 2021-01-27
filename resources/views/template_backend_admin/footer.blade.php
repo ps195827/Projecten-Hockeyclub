@@ -18,13 +18,16 @@
   <script src="/assets/modules/moment.min.js"></script>
   <script src="/assets/js/stisla.js"></script>
   <script src="/assets/modules/select2/dist/js/select2.full.min.js"></script>
+
+  <script src="/assets/modules/summernote/summernote-bs4.js"></script>
   
   <!-- JS Libraies -->
 
   <script src="/assets/js/page/bootstrap-modal.js"></script>
 
   <!-- Page Specific JS File -->
-  
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
   <!-- Template JS File -->
   <script src="/assets/js/scripts.js"></script>
   <script src="/assets/js/custom.js"></script>

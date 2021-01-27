@@ -19,4 +19,9 @@ class Doelgroep extends Model
     public function team(){
         return $this->hasMany('App\Models\Team');
     }
+
+    public function oefening(){
+        return $this->belongsToMany('App\Models\Oefening');
+    }
+
 }

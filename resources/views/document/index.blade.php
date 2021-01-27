@@ -14,20 +14,20 @@
 @section('content')
 
 
-@if(Session::has('success'))
+    @if(Session::has('success'))
         <div class="alert alert-success alert-dismissible show fade">
             <div class="alert-body">
-            <button class="close" data-dismiss="alert">
-                <span>&times;</span>
-            </button>
-            <b>Success</b> , {{ Session('success') }}
+                <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+                <strong>Success</strong> , {{ Session('success') }}
             </div>
         </div>
     @endif
 
     <a href="{{ route('document.create') }}" class="btn btn-success btn-sm">Maak nieuwe document aan</a>
-    <br><br>
-
+    <br>
+    <br>
         <table class="table table-striped table-hover table-sm">
             <thead>
                 <tr>
@@ -57,6 +57,5 @@
             </tbody>
         </table>
         {{ $document->links() }}
-
 
 @endsection

@@ -11,6 +11,7 @@ use App\Models\Video;
 
 class BibliotheekController extends Controller
 {
+    //protected $table = "";
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +19,13 @@ class BibliotheekController extends Controller
      */
     public function index()
     {
+
         $foto = Foto::all();
         $document = Document::all();
         $video = Video::all();
-        return view('bibliotheek.index');
+
+        // return view('bibliotheek.index', compact('document'));
+        return view('bibliotheek.index', compact('foto','document','video'));
     }
 
     /**

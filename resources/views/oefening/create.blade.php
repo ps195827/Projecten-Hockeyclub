@@ -1,5 +1,16 @@
 @extends('template_backend_admin.home')
 @section('sub-title','Nieuwe oefening')
+    @section('path')
+        <div class="section-header-breadcrumb">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('oefening.index') }}">Oefeningen</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Nieuwe oefening</li>
+                </ol>
+            </nav>
+        </div>
+    @endsection
 @section('content')
 
 
@@ -27,6 +38,7 @@
         <div class="form-group">
             <label>Titel</label>
             <input type="text" class="form-control" name="titel">
+        </div>
 
         <div class="form-group">
             <label>Domein</label>
@@ -37,7 +49,6 @@
                 @endforeach
             </select>
         </div>
-    </div>
     
 
     <div class="form-group">
@@ -112,8 +123,10 @@
 
     <div class="form-group">
         <label>Hulpmiddelen</label>
-        <input type="text" class="form-control" name="hulpmiddelen">
+        <textarea class="form-control"  id="editor" name="hulpmiddelen"></textarea>
     </div>
+
+    
 
     <div class="form-group">
         <label>Aandachtspunten</label>
@@ -155,7 +168,7 @@
 
     <div class="form-group">
         <label>Afbeelding</label>
-        <input type="text" class="form-control" name="afbeelding">
+        <input type="file" class="form-control" name="afbeelding">
     </div>
 
     <div class="form-group">
@@ -164,24 +177,42 @@
     </div>
 
     <div class="form-group">
+        <label>Doelgroep</label>
+        <select class="form-control select2" multiple="" name="doelgroep[]">
+            @foreach($doelgroep as $doelgroeps)
+                <option value="{{ $doelgroeps->id }}">{{ $doelgroeps->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="form-group">
         <input type="submit" class="btn btn-primary btn-block" value="Niewe oefening toevoegen">
     </div>
-    
-
-    
-  <!-- <textarea name="editor_content" id="myEditor"></textarea> -->
   
 </form>
-</form>
 
 
-<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'content' );
     CKEDITOR.replace( 'content2' );
     CKEDITOR.replace( 'content3' );
     CKEDITOR.replace( 'content4' );
 </script>
+
+<script>
+    ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+</script>
+
+
 
 
 

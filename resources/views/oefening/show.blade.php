@@ -36,7 +36,7 @@
             <h2 class="section-title">Oefeningensduur</h2>
             {{ $oefening->duur }} minuten
             <h2 class="section-title">Hulpmiddelen</h2>
-            {{ $oefening->hulpmiddelen }}
+            {!! $oefening->hulpmiddelen !!}
             <h2 class="section-title">Aandachtspunten</h2>
             {!! $oefening->aandachtspunten !!}
             <h2 class="section-title">Werkvorm</h2>
@@ -57,7 +57,7 @@
             <h2 class="section-title">Afbeelding</h2>
             <img src="{{ asset( $oefening->afbeelding) }}" class="img-fluid" style="width:100%;">
             <h2 class="section-title">Video</h2>
-            <iframe width="100%" height="300px" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            <iframe width="100%" height="300px" frameborder="0" allowfullscreen src="{{ $oefening->filmpje }}">
             </iframe>
             <h2 class="section-title">Info</h2>
             <ul class="list-group">
@@ -74,6 +74,11 @@
                 <span>{{ $oefening->updated_at->format('d-m-y m:h') }}</span>
                 </li>
             </ul>
+            <h2 class="section-title">Doelgroep</h2>
+            <p class="section">Deze oefening is geschikt voor onderstaande doelgroepen:</p>
+            @foreach($oefening->doelgroep as $doelgroeps)
+                        <span class="badge badge-primary m-1">{{ $doelgroeps->name }}</span>
+                    @endforeach
         </div>
     </div>
 
